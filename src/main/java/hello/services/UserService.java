@@ -11,5 +11,7 @@ public interface UserService {
 
     boolean logUserIn(String login, char[] password);
 
+
     String routeUserToChannelWithHyperlinkLink(String token, int channelID);
+
 }

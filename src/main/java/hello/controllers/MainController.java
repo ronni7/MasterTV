@@ -18,7 +18,11 @@ import java.util.List;
 
 
 @RestController
+<<<<<<< HEAD
 @RequestMapping(path = "/")
+=======
+@RequestMapping(path = "/goChatMe")
+>>>>>>> b73124bba2e5ac184a7bd6b932d7aaa37bfd6674
 
 public class MainController {
 
@@ -65,10 +69,12 @@ public class MainController {
         }
         return userService.registerNewUser(u);
     }
+
     @GetMapping(path = "/watch")
     public @ResponseBody String routeUserToChannelWithHyperlinkLink(@RequestParam int channelID){
         String token="insertTokenHere";
             return userService.routeUserToChannelWithHyperlinkLink(token,channelID);
     }
+
 
 }

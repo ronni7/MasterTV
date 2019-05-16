@@ -3,7 +3,10 @@ package hello.services;
 import hello.entities.User;
 
 import hello.repositories.UserRepository;
+
 import hello.utilities.Channel;
+
+
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
@@ -13,16 +16,20 @@ import java.util.List;
 @Component
 public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
+
     private ServerServiceImpl serverService;
+
 
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
+
         List<Channel> mockList=new ArrayList<>();
         mockList.add(new Channel("33398e47yiajsdf",1));
         mockList.add(new Channel("asdasdasd7yiajsdf",2));
         mockList.add(new Channel("1232k4jn23kiajsdf",3));
         this.serverService =new ServerServiceImpl(mockList);
+
     }
 
     @Override
@@ -46,11 +53,13 @@ public class UserServiceImpl implements UserService {
 return false;
     }
 
+
     @Override
     public String routeUserToChannelWithHyperlinkLink(String token, int channelID) {
 
         return serverService.getChannelHyperlink(channelID);
     }
+
 
   /*  private User getUserByValidationKey(String validationKey) {
         for (User user : userRepository.findAll())
