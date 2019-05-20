@@ -18,12 +18,8 @@ import java.util.List;
 
 
 @RestController
-<<<<<<< HEAD
-@RequestMapping(path = "/")
-=======
-@RequestMapping(path = "/goChatMe")
->>>>>>> b73124bba2e5ac184a7bd6b932d7aaa37bfd6674
 
+@RequestMapping(path = "/")
 public class MainController {
 
     private final UserServiceImpl userService;
