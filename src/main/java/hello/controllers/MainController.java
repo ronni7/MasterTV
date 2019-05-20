@@ -9,6 +9,7 @@ import hello.services.UserServiceImpl;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class MainController {
     public MainController(UserServiceImpl userService) {
         this.userService = userService;
     }
-
+    @Secured("ROLE_USER")
     @GetMapping(path = "/hello")
     public @ResponseBody
     String hello() {
