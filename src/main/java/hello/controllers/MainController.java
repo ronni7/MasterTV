@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hello.entities.User;
+import hello.entities.dataObjects.UserLoggedDTO;
 import hello.services.UserServiceImpl;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +45,7 @@ public class MainController {
 
     @PostMapping(path = "/login")
     public @ResponseBody
-    boolean logUserIn(@RequestParam String password,@RequestParam String login) {
+    UserLoggedDTO logUserIn(@RequestParam String password, @RequestParam String login) {
 
     return userService.logUserIn(login,password.toCharArray());
     }

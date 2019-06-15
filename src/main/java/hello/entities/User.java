@@ -1,6 +1,7 @@
 package hello.entities;
 
 import hello.utilities.enums.GENDER;
+import hello.utilities.enums.ROLE;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -70,7 +71,7 @@ public class User implements Serializable{
         this.sex = sex;
     }
 
-    public User(String name, String surname, String login, String nickname, char[] password, String email, GENDER sex) {
+    public User(String name, String surname, String login, String nickname, char[] password, String email, GENDER sex, ROLE role) {
         this.name = name;
         this.surname = surname;
         this.login = login;
@@ -78,6 +79,33 @@ public class User implements Serializable{
         this.password = password;
         this.email = email;
         this.sex = sex;
+        this.role = role;
+    }
+
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String name;
+    private String surname;
+    private String login;
+    private String nickname;
+    private char[] password;
+    private String email;
+    private GENDER sex;
+
+    public ROLE getRole() {
+        return role;
+    }
+
+    public void setRole(ROLE role) {
+        this.role = role;
+    }
+
+    private ROLE role;
+    public char[] getPassword() {
+        return password;
     }
 
     @Override
@@ -91,22 +119,8 @@ public class User implements Serializable{
                 ", password=" + Arrays.toString(password) +
                 ", email='" + email + '\'' +
                 ", sex=" + sex +
+                ", role=" + role +
                 '}';
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String name;
-    private String surname;
-    private String login;
-    private String nickname;
-    private char[] password;
-    private String email;
-    private GENDER sex;
-
-    public char[] getPassword() {
-        return password;
     }
 
     public void setPassword(char[] password) {
