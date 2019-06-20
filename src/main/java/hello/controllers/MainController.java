@@ -53,17 +53,6 @@ public class MainController {
     @PostMapping(path = "/register")
     public @ResponseBody
     User registerNewUser(@RequestBody User u) {
-      /*  User u = null;
-        try {
-
-            u = objectMapper.readValue(s, User.class);
-        } catch (JsonParseException e) {
-            System.out.println("it doesnt work ");
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
         return userService.registerNewUser(u);
     }
 
