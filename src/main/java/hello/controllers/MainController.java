@@ -52,8 +52,8 @@ public class MainController {
 
     @PostMapping(path = "/register")
     public @ResponseBody
-    User registerNewUser(@RequestParam String s) {
-        User u = null;
+    User registerNewUser(@RequestBody User u) {
+      /*  User u = null;
         try {
 
             u = objectMapper.readValue(s, User.class);
@@ -63,7 +63,7 @@ public class MainController {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         return userService.registerNewUser(u);
     }
 

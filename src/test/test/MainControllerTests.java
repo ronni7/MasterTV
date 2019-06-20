@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -40,7 +41,7 @@ public class MainControllerTests {
 
     @Test
     public void ShouldReturnUser() throws Exception {
-        User u = new User(
+        User user = new User(
                 "imie",
                 "nazwisko",
                 "login",
@@ -50,8 +51,9 @@ public class MainControllerTests {
                 GENDER.MALE,
                 ROLE.USER
         );
-        mockMvc.perform(post("http://localhost:8080/register")
-                .param("s", mapper.writeValueAsString(u)))
+        mockMvc.perform(post("http://localhost:8080/register").contentType(MediaType.APPLICATION_JSON)
+                .content(mapper.writeValueAsString(user).getBytes()))
+             /*   .param("s", mapper.writeValueAsString(u)))*/
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$").value(Matchers.instanceOf(LinkedHashMap.class)));
 
