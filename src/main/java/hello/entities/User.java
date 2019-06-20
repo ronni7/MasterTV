@@ -11,16 +11,16 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 @Entity
-public class User implements Serializable{
+public class User implements Serializable {
     public User() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUserID() {
+        return userID;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserID(Integer userID) {
+        this.userID = userID;
     }
 
     public String getName() {
@@ -83,10 +83,9 @@ public class User implements Serializable{
     }
 
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer userID;
     private String name;
     private String surname;
     private String login;
@@ -104,6 +103,7 @@ public class User implements Serializable{
     }
 
     private ROLE role;
+
     public char[] getPassword() {
         return password;
     }
@@ -111,7 +111,7 @@ public class User implements Serializable{
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "userID=" + userID +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", login='" + login + '\'' +

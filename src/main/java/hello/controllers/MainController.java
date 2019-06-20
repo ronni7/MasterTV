@@ -34,12 +34,12 @@ public class MainController {
     @GetMapping(path = "/hello")
     public @ResponseBody
     String hello() {
-        return "Hello World" ;
+        return "Hello World";
     }
+
     @GetMapping(path = "/all")
     public @ResponseBody
-    List<User> getAllUsers()
-    {
+    List<User> getAllUsers() {
         return userService.findAll();
     }
 
@@ -47,17 +47,17 @@ public class MainController {
     public @ResponseBody
     UserLoggedDTO logUserIn(@RequestParam String password, @RequestParam String login) {
 
-    return userService.logUserIn(login,password.toCharArray());
+        return userService.logUserIn(login, password.toCharArray());
     }
 
     @PostMapping(path = "/register")
     public @ResponseBody
     User registerNewUser(@RequestParam String s) {
-        User u=null;
+        User u = null;
         try {
 
-          u= objectMapper.readValue(s,User.class);
-        }  catch (JsonParseException e) {
+            u = objectMapper.readValue(s, User.class);
+        } catch (JsonParseException e) {
             System.out.println("it doesnt work ");
         } catch (JsonMappingException e) {
             e.printStackTrace();
@@ -65,12 +65,6 @@ public class MainController {
             e.printStackTrace();
         }
         return userService.registerNewUser(u);
-    }
-
-    @GetMapping(path = "/watch")
-    public @ResponseBody String routeUserToChannelWithHyperlinkLink(@RequestParam int channelID){
-        String token="insertTokenHere";
-            return userService.routeUserToChannelWithHyperlinkLink(token,channelID);
     }
 
 

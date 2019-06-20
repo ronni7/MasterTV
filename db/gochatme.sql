@@ -47,7 +47,7 @@ INSERT INTO `hibernate_sequence` (`next_val`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `login` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE `user` (
 -- Zrzut danych tabeli `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `login`, `name`, `nickname`, `password`, `sex`, `surname`) VALUES
+INSERT INTO `user` (`userID`, `email`, `login`, `name`, `nickname`, `password`, `sex`, `surname`) VALUES
 (1, 'email@johnny.com', 'login', 'imie', 'nick', '$2a$10$hx5YeD31soTUtYtQLzQwuOCLYcltHex40HG4jfsqa6Q26CIIoSRGe', '0', 'nazwisko');
 
 --
@@ -72,7 +72,7 @@ INSERT INTO `user` (`id`, `email`, `login`, `name`, `nickname`, `password`, `sex
 -- Indeksy dla tabeli `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`userID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

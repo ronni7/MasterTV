@@ -66,37 +66,33 @@ public class MainControllerTests {
 
     }
 
-    @Test
-    public void ShouldReturnHyperlink() throws Exception {
-
-        System.out.println(this.mockMvc.perform(get("http://localhost:8080/watch").param("channelID", "1"))
-                .andDo(print()).andExpect(status().isOk()).andExpect(jsonPath("$").isString()).andReturn());
-
-    }
 
     @Test
     public void ShouldReturnTrueWhenUserHasBeenLoggedSuccessfully() throws Exception {
-        String json= mockMvc.perform(post("http://localhost:8080/login")
+        String json = mockMvc.perform(post("http://localhost:8080/login")
                 .param("password", "TajneHaslo1")
                 .param("login", "login"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$").isMap()).andReturn().getResponse().getContentAsString();;
+                .andExpect(jsonPath("$").isMap()).andReturn().getResponse().getContentAsString();
+        ;
 
-        UserLoggedDTO u=mapper.readValue(json,UserLoggedDTO.class);
-        //returns true if validation is successful
+        UserLoggedDTO u = mapper.readValue(json, UserLoggedDTO.class);
+        //no longer returns true if validation is successful, userLoggedDTO instead
         Assert.assertEquals(u.getRole(), ROLE.USER);
     }
 
     @Test
     public void ShouldReturnTrueWhenAdminHasBeenLoggedSuccessfully() throws Exception {
-        String json= mockMvc.perform(post("http://localhost:8080/login")
+        String json = mockMvc.perform(post("http://localhost:8080/login")
                 .param("password", "admin")
                 .param("login", "admin"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$").isMap()).andReturn().getResponse().getContentAsString();;
+                .andExpect(jsonPath("$").isMap()).andReturn().getResponse().getContentAsString();
+        ;
+        //no longer returns true if validation is successful, userLoggedDTO instead
+        UserLoggedDTO u = mapper.readValue(json, UserLoggedDTO.class);
 
-        UserLoggedDTO u=mapper.readValue(json,UserLoggedDTO.class);
-        //returns true if validation is successful
         Assert.assertEquals(u.getRole(), ROLE.ADMIN);
     }
+
 }
