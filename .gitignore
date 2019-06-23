@@ -13,7 +13,8 @@ front/index.html
 front/logowanie.html
 target
 git
-
+gs-mysql-data.iml
+.idea/
 
 
 # Sensitive or high-churn files
