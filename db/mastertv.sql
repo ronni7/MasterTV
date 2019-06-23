@@ -19,8 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `mastertv`
---
+-- Baza danych: `mastertvghi
 
 -- --------------------------------------------------------
 
