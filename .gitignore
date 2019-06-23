@@ -11,10 +11,10 @@
  db/gochatme.sql
 front/index.html
 front/logowanie.html
+target
+git
 
 
-
-#front
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
