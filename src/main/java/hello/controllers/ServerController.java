@@ -58,4 +58,20 @@ public class ServerController {
 
         return serverService.save(movie);
     }
+    @PostMapping(path = "/updateMovie")
+
+    public @ResponseBody
+    MovieDTO updateMovie(@RequestParam int channelID, @RequestParam int movieID,@RequestParam String startingTime) {
+        Movie m=serverService.findMovieByMovieID(movieID);
+        m.setStartAtTime(startingTime);
+        m.setChannel(channelService.getChannelByChannelID(channelID));
+        return serverService.save(m);
+    }    @PostMapping(path = "/updateChannel")
+    public @ResponseBody
+    Channel updateChannel(@RequestParam int channelID, @RequestParam int movieID,@RequestParam String startingTime) {
+        Channel c=channelService.getChannelByChannelID(channelID);
+        c.getPlaylist().add(serverService.findMovieByMovieID(updateMovie(channelID,movieID,startingTime).getId()));
+        return channelService.save(c);
+    }
+
 }

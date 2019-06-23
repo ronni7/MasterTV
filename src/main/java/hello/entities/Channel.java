@@ -1,30 +1,40 @@
 package hello.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Channel implements Serializable {
     public Channel() {
+
     }
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private int channelID;
     private String hyperlink;
-    @OneToMany
-    @JoinColumn(name = "movieID")
-    @OrderBy(value = "channelID")
-    private List<Movie> playlist;
-    private String startsAtTime;
+    @OneToMany(mappedBy = "channel",cascade=CascadeType.ALL,fetch = FetchType.EAGER)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @JsonManagedReference
+    @OrderBy(value = "startAtTime")
+    private List<Movie> playlist = new ArrayList<>();
 
-    public Channel(String hyperlink, List<Movie> playlist, String startsAtTime) {
+    public Channel(String hyperlink, List<Movie> playlist) {
         this.hyperlink = hyperlink;
         this.playlist = playlist;
-        this.startsAtTime = startsAtTime;
     }
 
+    public void addMovieToPlaylist(Movie movie) {
+        movie.setChannel(this);
+        this.playlist.add(movie);
+
+    }
 
     public int getChannelID() {
         return channelID;
@@ -50,21 +60,13 @@ public class Channel implements Serializable {
         this.playlist = playlist;
     }
 
-    public String getStartsAtTime() {
-        return startsAtTime;
-    }
-
-    public void setStartsAtTime(String startsAtTime) {
-        this.startsAtTime = startsAtTime;
-    }
-
     @Override
     public String toString() {
         return "Channel{" +
                 "channelID=" + channelID +
                 ", hyperlink='" + hyperlink + '\'' +
                 ", playlist=" + playlist +
-                ", startsAtTime='" + startsAtTime + '\'' +
+
                 '}';
     }
 }

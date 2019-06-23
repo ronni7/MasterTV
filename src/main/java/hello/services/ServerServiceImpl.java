@@ -26,20 +26,6 @@ public class ServerServiceImpl implements ServerService {
     @Override
     public List<MovieDTO> getAllMovies() {
 
-      //  List<Movie> list = serverRepository.findAll();
-      //  System.out.println("list = " + list);
-      //  System.out.println("list.stream() = " + list.stream());
-
-       // List<Movie> movieList= list.stream().collect(Collectors.toList()).forEach(movie -> movie.setDescription("CHUJ"));;
-      //  System.out.println("list movieslist= " + movieList);
-        // list.stream().forEach(movie -> convertToDTO(movie));
-     /*   for (Movie m : list) {
-            System.out.println("m = " + m);
-            System.out.println("new MovieDTO(m.getMovieID(), m.getTitle(), m.getDescription(), m.getLengthInMinutes(), m.getMinimumAge()) = "
-                    + new MovieDTO(m.getMovieID(), m.getTitle(), m.getDescription(), m.getLengthInMinutes(), m.getMinimumAge()));
-
-        }*/
-     //   List<MovieDTO> lissst=list.forEach(this::convertToDTO);
         return serverRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
@@ -52,6 +38,11 @@ public class ServerServiceImpl implements ServerService {
     @Override
     public List<Movie> findAll() {
         return serverRepository.findAll();
+    }
+
+    @Override
+    public Movie findMovieByMovieID(int movieID) {
+      return serverRepository.findByMovieID(movieID);
     }
 
     private MovieDTO convertToDTO(Movie movie) {

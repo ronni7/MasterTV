@@ -1,11 +1,16 @@
 package hello.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Time;
 
 @Entity
-public class Movie implements Serializable {
+public class Movie implements Serializable,Comparable {
     public Movie() {
     }
 
@@ -16,16 +21,20 @@ public class Movie implements Serializable {
     private String description;
     private int lengthInMinutes;
     private int minimumAge;
+    private String startAtTime;
     private String fileName;
-    @ManyToOne
-    @JoinColumn(name = "channelID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "channelid")
+    @JsonBackReference
+    @NotFound(action = NotFoundAction.IGNORE)
     private Channel channel;
 
-    public Movie(String title, String description, int lengthInMinutes, int minimumAge, String fileName) {
+    public Movie(String title, String description, int lengthInMinutes, int minimumAge, String startAtTime, String fileName) {
         this.title = title;
         this.description = description;
         this.lengthInMinutes = lengthInMinutes;
         this.minimumAge = minimumAge;
+        this.startAtTime = startAtTime;
         this.fileName = fileName;
     }
 
@@ -69,24 +78,20 @@ public class Movie implements Serializable {
         this.minimumAge = minimumAge;
     }
 
+    public String getStartAtTime() {
+        return startAtTime;
+    }
+
+    public void setStartAtTime(String startAtTime) {
+        this.startAtTime = startAtTime;
+    }
+
     public String getFileName() {
         return fileName;
     }
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
-    }
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "ID=" + movieID +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", lengthInMinutes=" + lengthInMinutes +
-                ", minimumAge=" + minimumAge +
-                ", fileName='" + fileName + '\'' +
-                '}';
     }
 
     public Channel getChannel() {
@@ -96,4 +101,16 @@ public class Movie implements Serializable {
     public void setChannel(Channel channel) {
         this.channel = channel;
     }
+
+
+
+    @Override
+    public int compareTo(Object o) {
+        System.out.println("(Time.valueOf(startAtTime)).compareTo(Time.valueOf(((Movie)o).startAtTime)) = " + (Time.valueOf(startAtTime)).compareTo(Time.valueOf(((Movie)o).startAtTime)));
+   return (Time.valueOf(startAtTime)).compareTo(Time.valueOf(((Movie)o).startAtTime));
+    }
+
+
 }
+
+

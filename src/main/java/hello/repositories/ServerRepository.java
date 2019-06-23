@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ServerRepository extends CrudRepository<Movie,Integer> {
     List<Movie> findAll();
-
+Movie findByMovieID(Integer movieID);
 }

@@ -12,4 +12,5 @@ public interface ServerService {
 
     MovieDTO save(Movie movie);
     List<Movie> findAll();
+    Movie findMovieByMovieID(int movieID);
 }

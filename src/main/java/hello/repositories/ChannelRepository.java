@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ChannelRepository extends CrudRepository<Channel,Integer> {
     List<Channel> findAll();
+    Channel findByChannelID(Integer channelID);
 }
