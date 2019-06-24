@@ -36,6 +36,11 @@ public class ServerServiceImpl implements ServerService {
     }
 
     @Override
+    public Movie saveFullMovie(Movie movie) {
+        return serverRepository.save(movie);
+    }
+
+    @Override
     public List<Movie> findAll() {
         return serverRepository.findAll();
     }

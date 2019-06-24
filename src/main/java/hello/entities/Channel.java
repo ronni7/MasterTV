@@ -19,15 +19,25 @@ public class Channel implements Serializable {
     @Id
     private int channelID;
     private String hyperlink;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @OneToMany(mappedBy = "channel",cascade=CascadeType.ALL,fetch = FetchType.EAGER)
     @NotFound(action = NotFoundAction.IGNORE)
     @JsonManagedReference
     @OrderBy(value = "startAtTime")
     private List<Movie> playlist = new ArrayList<>();
 
-    public Channel(String hyperlink, List<Movie> playlist) {
+    public Channel(String hyperlink, String name) {
         this.hyperlink = hyperlink;
-        this.playlist = playlist;
+        this.name = name;
     }
 
     public void addMovieToPlaylist(Movie movie) {
@@ -65,8 +75,8 @@ public class Channel implements Serializable {
         return "Channel{" +
                 "channelID=" + channelID +
                 ", hyperlink='" + hyperlink + '\'' +
+                ", name='" + name + '\'' +
                 ", playlist=" + playlist +
-
                 '}';
     }
 }

@@ -61,17 +61,31 @@ public class ServerController {
     @PostMapping(path = "/updateMovie")
 
     public @ResponseBody
-    MovieDTO updateMovie(@RequestParam int channelID, @RequestParam int movieID,@RequestParam String startingTime) {
+    Movie updateMovie(@RequestParam int channelID, @RequestParam int movieID,@RequestParam String startingTime) {
         Movie m=serverService.findMovieByMovieID(movieID);
         m.setStartAtTime(startingTime);
         m.setChannel(channelService.getChannelByChannelID(channelID));
-        return serverService.save(m);
+        return serverService.saveFullMovie(m);
     }    @PostMapping(path = "/updateChannel")
     public @ResponseBody
     Channel updateChannel(@RequestParam int channelID, @RequestParam int movieID,@RequestParam String startingTime) {
         Channel c=channelService.getChannelByChannelID(channelID);
-        c.getPlaylist().add(serverService.findMovieByMovieID(updateMovie(channelID,movieID,startingTime).getId()));
+        c.getPlaylist().add(serverService.findMovieByMovieID(updateMovie(channelID,movieID,startingTime).getMovieID()));
         return channelService.save(c);
     }
+    @PostMapping(path = "/updateChannelHyperlink")
+    public @ResponseBody
+    Channel setChannelHyperlink(@RequestParam int channelID, @RequestParam String hyperlink)
+    {
+        Channel c=channelService.getChannelByChannelID(channelID);
+        c.setHyperlink(hyperlink);
+          return channelService.save(c);
+    }
 
+    @GetMapping(path = "/getMovieFilename")
+    public @ResponseBody
+    String getMovieFilename(@RequestParam int movieID)
+    {
+        return serverService.findMovieByMovieID(movieID).getFileName();
+    }
 }
