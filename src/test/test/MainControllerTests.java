@@ -39,8 +39,28 @@ public class MainControllerTests {
     @Autowired
     private ObjectMapper mapper;
 
+          @Test
+        public void ShouldReturnUser() throws Exception {
+            User user = new User(
+                    "imieee",
+                    "nazwiskaso",
+                    "SpecjalnyTestowy",
+                    "Nickname",
+                    "hasloJestTajne".toCharArray(),
+                    "emaissl@johnny.com",
+                    GENDER.MALE,
+                    ROLE.USER
+            );
+            mockMvc.perform(post("http://localhost:8080/register").contentType(MediaType.APPLICATION_JSON)
+                    .content(mapper.writeValueAsString(user).getBytes()))
+                    /*   .param("s", mapper.writeValueAsString(u)))*/
+                    .andDo(print()).andExpect(status().isOk())
+                    .andExpect(jsonPath("$").value(Matchers.instanceOf(LinkedHashMap.class)));
+
+
+        }
     @Test
-    public void ShouldReturnUser() throws Exception {
+    public void ShouldNotReturnUserBecauseLoginIsAlreadyTaken() throws Exception {
         User user = new User(
                 "imie",
                 "nazwisko",
@@ -51,15 +71,15 @@ public class MainControllerTests {
                 GENDER.MALE,
                 ROLE.USER
         );
-        mockMvc.perform(post("http://localhost:8080/register").contentType(MediaType.APPLICATION_JSON)
+        String json=mockMvc.perform(post("http://localhost:8080/register").contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(user).getBytes()))
-             /*   .param("s", mapper.writeValueAsString(u)))*/
-                .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$").value(Matchers.instanceOf(LinkedHashMap.class)));
+                /*   .param("s", mapper.writeValueAsString(u)))*/
+                .andDo(print()).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        User u=mapper.readValue(json,User.class);
+            assert u.getUserID()==-1;
 
 
     }
-
     @Test
     public void ShouldReturnAllUsers() throws Exception {
 
@@ -76,7 +96,7 @@ public class MainControllerTests {
                 .param("login", "login"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$").isMap()).andReturn().getResponse().getContentAsString();
-        ;
+
 
         UserLoggedDTO u = mapper.readValue(json, UserLoggedDTO.class);
         //no longer returns true if validation is successful, userLoggedDTO instead

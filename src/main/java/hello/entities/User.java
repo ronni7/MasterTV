@@ -15,6 +15,10 @@ public class User implements Serializable {
     public User() {
     }
 
+    public User(int id) {
+        this.userID=id;
+    }
+
     public Integer getUserID() {
         return userID;
     }
