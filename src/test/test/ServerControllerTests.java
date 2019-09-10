@@ -111,4 +111,13 @@ public class ServerControllerTests {
 
     }
 
+    @Test
+    public void ShouldReturnRequestedHyperlink() throws Exception {
+
+        String json = this.mockMvc.perform(get("http://localhost:8080/server/watch?channelID=1")).andDo(print())
+                .andExpect(status().isOk()).andExpect(jsonPath("$").isNotEmpty()).andReturn().getResponse().getContentAsString();
+        Assert.assertEquals(json, "PrzykladowyURL");
+
+    }
+
 }

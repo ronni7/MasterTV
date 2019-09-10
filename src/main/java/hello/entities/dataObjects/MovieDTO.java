@@ -1,18 +1,22 @@
 package hello.entities.dataObjects;
 
+import hello.entities.Channel;
+
 public class MovieDTO {
     private Integer id;
     private String title;
     private String description;
     private int lengthInMinutes;
     private int minimumAge;
+    private Channel channelID;
 
-    public MovieDTO(Integer id, String title, String description, int lengthInMinutes, int minimumAge) {
+    public MovieDTO(Integer id, String title, String description, int lengthInMinutes, int minimumAge, Channel channelID) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.lengthInMinutes = lengthInMinutes;
         this.minimumAge = minimumAge;
+        this.channelID = channelID;
     }
 
     @Override
@@ -64,5 +68,13 @@ public class MovieDTO {
 
     public void setMinimumAge(int minimumAge) {
         this.minimumAge = minimumAge;
+    }
+
+    public Channel getChannelID() {
+        return channelID;
+    }
+
+    public void setChannelID(Channel channelID) {
+        this.channelID = channelID;
     }
 }

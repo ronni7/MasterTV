@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 23 Cze 2019, 20:52
+-- Czas generowania: 10 Wrz 2019, 22:48
 -- Wersja serwera: 10.1.37-MariaDB
 -- Wersja PHP: 7.3.0
 
@@ -30,17 +30,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `channel` (
   `channelid` int(11) NOT NULL,
-  `hyperlink` varchar(255) DEFAULT NULL
+  `hyperlink` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `channel`
 --
 
-INSERT INTO `channel` (`channelid`, `hyperlink`) VALUES
-(1, 'link'),
-(2, 'link2'),
-(3, 'link3');
+INSERT INTO `channel` (`channelid`, `hyperlink`, `name`) VALUES
+(1, 'PrzykladowyURL', 'nazwa pierwszego kanalu'),
+(2, 'link2', 'nazwa drugiego kanalu'),
+(3, 'link3', 'nazwa trzeciego kanalu'),
+(4, '', 'nazwa');
 
 -- --------------------------------------------------------
 
@@ -57,9 +59,9 @@ CREATE TABLE `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(35),
-(35),
-(35);
+(50),
+(50),
+(50);
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,7 @@ CREATE TABLE `movie` (
 INSERT INTO `movie` (`movieid`, `description`, `file_name`, `length_in_minutes`, `minimum_age`, `title`, `start_at_time`, `channelid`) VALUES
 (33, 'Frodo gets ring,goes mad, runs through Middlearth to destroy it', 'lotr1.mp4', 192, 7, 'Lord Of The Rings: The Fellowship Of The Ring', '12:00', 1),
 (34, 'Frodo has ring, Theoden says \'Where was Gondor x100 times, LMAO', 'lotr2.mp4', 215, 7, 'Lord Of The Rings: The Two Towers', '13:00', 1),
-(35, 'Frodo steps into Mordor finally, Aragorn is going to be king wtf', 'lotr3.mp4', 292, 7, 'Lord Of The Rings: The Fellowship Of The Ring', '17:00', 1),
+(35, 'Frodo steps into Mordor finally, Aragorn is going to be king wtf', 'lotr3.mp4', 292, 7, 'Lord Of The Rings: The Fellowship Of The Ring', '12:00', 2),
 (11, 'Description', 'movie11111111.mp4', 292, 13, 'Movie 1', NULL, NULL);
 
 -- --------------------------------------------------------

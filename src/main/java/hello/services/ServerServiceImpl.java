@@ -2,6 +2,7 @@ package hello.services;
 
 import hello.entities.Movie;
 import hello.entities.dataObjects.MovieDTO;
+import hello.repositories.ChannelRepository;
 import hello.repositories.ServerRepository;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +19,6 @@ public class ServerServiceImpl implements ServerService {
         this.serverRepository = serverRepository;
     }
 
-    @Override
-    public String routeUserToChannelWithHyperlinkLink(String token, int channelID) {
-        return null;
-    }
 
     @Override
     public List<MovieDTO> getAllMovies() {
@@ -51,12 +48,9 @@ public class ServerServiceImpl implements ServerService {
     }
 
     private MovieDTO convertToDTO(Movie movie) {
-        return new MovieDTO(movie.getMovieID(), movie.getTitle(), movie.getDescription(), movie.getLengthInMinutes(), movie.getMinimumAge());
+        return new MovieDTO(movie.getMovieID(), movie.getTitle(), movie.getDescription(), movie.getLengthInMinutes(), movie.getMinimumAge(),movie.getChannel());
     }
-    /* @Override
-    public String getChannelHyperlink(int channelID) {
-       return hyperlinks.stream().filter(channel -> channel.getChannelID()==channelID).findFirst().get().getHyperlink();
-    }*/
+
 
 
 }

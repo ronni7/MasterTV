@@ -23,12 +23,11 @@ public class ServerController {
         this.channelService = channelService;
     }
 
-    /*@GetMapping(path = "/watch")
+    @GetMapping(path = "/watch")
     public @ResponseBody
     String routeUserToChannelWithHyperlinkLink(@RequestParam int channelID){
-        String token="insertTokenHere";
-        return serverService.routeUserToChannelWithHyperlinkLink(token,channelID);
-    }*/
+      return channelService.getChannelByChannelID(channelID).getHyperlink();
+    }
     @GetMapping(path = "/allMovies")
     public @ResponseBody
     List<MovieDTO> allMovies() {
