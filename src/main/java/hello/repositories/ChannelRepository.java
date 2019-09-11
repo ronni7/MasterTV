@@ -5,7 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ChannelRepository extends CrudRepository<Channel,Integer> {
+public interface ChannelRepository extends CrudRepository<Channel, Integer> {
     List<Channel> findAll();
+
     Channel findByChannelID(Integer channelID);
+
 }

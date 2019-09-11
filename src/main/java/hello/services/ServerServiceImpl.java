@@ -2,12 +2,9 @@ package hello.services;
 
 import hello.entities.Movie;
 import hello.entities.dataObjects.MovieDTO;
-import hello.repositories.ChannelRepository;
 import hello.repositories.ServerRepository;
 import org.springframework.stereotype.Component;
 
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,13 +41,17 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     public Movie findMovieByMovieID(int movieID) {
-      return serverRepository.findByMovieID(movieID);
+        return serverRepository.findByMovieID(movieID);
     }
 
     private MovieDTO convertToDTO(Movie movie) {
-        return new MovieDTO(movie.getMovieID(), movie.getTitle(), movie.getDescription(), movie.getLengthInMinutes(), movie.getMinimumAge(),movie.getChannel());
+        return new MovieDTO(movie.getMovieID(), movie.getTitle(), movie.getDescription(), movie.getStartAtTime(), movie.getLengthInMinutes(), movie.getMinimumAge(), movie.getChannel());
     }
 
+    @Override
+    public void deleteMovieByChannelID(int movieID) {
+        serverRepository.deleteById(movieID);
+    }
 
 
 }

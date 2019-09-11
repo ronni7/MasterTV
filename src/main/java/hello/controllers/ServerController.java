@@ -25,14 +25,16 @@ public class ServerController {
 
     @GetMapping(path = "/watch")
     public @ResponseBody
-    String routeUserToChannelWithHyperlinkLink(@RequestParam int channelID){
-      return channelService.getChannelByChannelID(channelID).getHyperlink();
+    String routeUserToChannelWithHyperlinkLink(@RequestParam int channelID) {
+        return channelService.getChannelByChannelID(channelID).getHyperlink();
     }
+
     @GetMapping(path = "/allMovies")
     public @ResponseBody
     List<MovieDTO> allMovies() {
         return serverService.getAllMovies();
     }
+
     @GetMapping(path = "/allM")
     public @ResponseBody
     List<Movie> allM() {
@@ -57,34 +59,47 @@ public class ServerController {
 
         return serverService.save(movie);
     }
-    @PostMapping(path = "/updateMovie")
 
+    @PostMapping(path = "/updateMovie")
     public @ResponseBody
-    Movie updateMovie(@RequestParam int channelID, @RequestParam int movieID,@RequestParam String startingTime) {
-        Movie m=serverService.findMovieByMovieID(movieID);
+    Movie updateMovie(@RequestParam int channelID, @RequestParam int movieID, @RequestParam String startingTime) {
+        Movie m = serverService.findMovieByMovieID(movieID);
         m.setStartAtTime(startingTime);
         m.setChannel(channelService.getChannelByChannelID(channelID));
         return serverService.saveFullMovie(m);
-    }    @PostMapping(path = "/updateChannel")
+    }
+
+    @PostMapping(path = "/updateChannel")
     public @ResponseBody
-    Channel updateChannel(@RequestParam int channelID, @RequestParam int movieID,@RequestParam String startingTime) {
-        Channel c=channelService.getChannelByChannelID(channelID);
-        c.getPlaylist().add(serverService.findMovieByMovieID(updateMovie(channelID,movieID,startingTime).getMovieID()));
+    Channel updateChannel(@RequestParam int channelID, @RequestParam int movieID, @RequestParam String startingTime) {
+        Channel c = channelService.getChannelByChannelID(channelID);
+        c.getPlaylist().add(serverService.findMovieByMovieID(updateMovie(channelID, movieID, startingTime).getMovieID()));
         return channelService.save(c);
     }
+
     @PostMapping(path = "/updateChannelHyperlink")
     public @ResponseBody
-    Channel setChannelHyperlink(@RequestParam int channelID, @RequestParam String hyperlink)
-    {
-        Channel c=channelService.getChannelByChannelID(channelID);
+    Channel setChannelHyperlink(@RequestParam int channelID, @RequestParam String hyperlink) {
+        Channel c = channelService.getChannelByChannelID(channelID);
         c.setHyperlink(hyperlink);
-          return channelService.save(c);
+        return channelService.save(c);
     }
 
     @GetMapping(path = "/getMovieFilename")
     public @ResponseBody
-    String getMovieFilename(@RequestParam int movieID)
-    {
+    String getMovieFilename(@RequestParam int movieID) {
         return serverService.findMovieByMovieID(movieID).getFileName();
+    }
+
+    @PostMapping(path = "/deleteChannel")
+    public @ResponseBody
+    void deleteChannel(@RequestParam int channelID) {
+        channelService.deleteChannelByChannelID(channelID);
+    }
+
+    @PostMapping(path = "/deleteMovie")
+    public @ResponseBody
+    void deleteMovie(@RequestParam int movieID) {
+        serverService.deleteMovieByChannelID(movieID);
     }
 }

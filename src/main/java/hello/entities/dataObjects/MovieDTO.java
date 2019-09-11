@@ -6,14 +6,16 @@ public class MovieDTO {
     private Integer id;
     private String title;
     private String description;
+    private String startAtTime;
     private int lengthInMinutes;
     private int minimumAge;
     private Channel channelID;
 
-    public MovieDTO(Integer id, String title, String description, int lengthInMinutes, int minimumAge, Channel channelID) {
+    public MovieDTO(Integer id, String title, String description, String startAtTime, int lengthInMinutes, int minimumAge, Channel channelID) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.startAtTime = startAtTime;
         this.lengthInMinutes = lengthInMinutes;
         this.minimumAge = minimumAge;
         this.channelID = channelID;
@@ -28,6 +30,14 @@ public class MovieDTO {
                 ", lengthInMinutes=" + lengthInMinutes +
                 ", minimumAge=" + minimumAge +
                 '}';
+    }
+
+    public String getStartAtTime() {
+        return startAtTime;
+    }
+
+    public void setStartAtTime(String startAtTime) {
+        this.startAtTime = startAtTime;
     }
 
     public Integer getId() {

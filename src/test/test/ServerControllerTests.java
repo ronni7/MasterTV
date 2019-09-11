@@ -118,17 +118,5 @@ public class ServerControllerTests {
 
     }
 
-    @Test
-    public void ShouldReturnSavedChannel() throws Exception {
-
-        Channel channel = new Channel("link1111.html","nazwadOtESTOW");
-        String json = this.mockMvc.perform(post("http://localhost:8080/server/saveChannel").contentType(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(channel).getBytes())).andDo(print())
-                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-        System.out.println("json = " + json);
-       Channel channel1 = mapper.readValue(json, Channel.class);
-        Assert.assertEquals(channel1.getHyperlink(), "link1111.html");
-
-    }
-
 }
+

@@ -18,4 +18,5 @@ public interface ServerService {
     Movie findMovieByMovieID(int movieID);
 
 
+    void deleteMovieByChannelID(int movieID);
 }

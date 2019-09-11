@@ -5,7 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ServerRepository extends CrudRepository<Movie,Integer> {
+public interface ServerRepository extends CrudRepository<Movie, Integer> {
     List<Movie> findAll();
-Movie findByMovieID(Integer movieID);
+
+    Movie findByMovieID(Integer movieID);
+
 }

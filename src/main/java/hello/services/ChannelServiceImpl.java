@@ -28,4 +28,10 @@ public class ChannelServiceImpl implements ChannelService {
     public Channel getChannelByChannelID(int channelID) {
         return channelRepository.findByChannelID(channelID);
     }
+
+    @Override
+    public void deleteChannelByChannelID(int channelID) {
+        channelRepository.deleteById(channelID);
+    }
+
 }
