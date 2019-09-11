@@ -17,7 +17,7 @@ public class Channel implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private int channelID;
+    private Integer channelID;
     private String hyperlink;
     private String name;
 
@@ -46,11 +46,11 @@ public class Channel implements Serializable {
 
     }
 
-    public int getChannelID() {
+    public Integer getChannelID() {
         return channelID;
     }
 
-    public void setChannelID(int channelID) {
+    public void setChannelID(Integer channelID) {
         this.channelID = channelID;
     }
 

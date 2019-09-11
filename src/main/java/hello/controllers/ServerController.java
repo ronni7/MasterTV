@@ -47,7 +47,7 @@ public class ServerController {
 
     @PostMapping(path = "/saveChannel")
     public @ResponseBody
-    Channel saveChannel(@RequestParam Channel channel) {
+    Channel saveChannel(@RequestBody Channel channel) {
         return channelService.save(channel);
     }
 

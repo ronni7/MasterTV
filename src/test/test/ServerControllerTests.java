@@ -16,9 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-
 import javax.transaction.Transactional;
-
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -117,6 +115,19 @@ public class ServerControllerTests {
         String json = this.mockMvc.perform(get("http://localhost:8080/server/watch?channelID=1")).andDo(print())
                 .andExpect(status().isOk()).andExpect(jsonPath("$").isNotEmpty()).andReturn().getResponse().getContentAsString();
         Assert.assertEquals(json, "PrzykladowyURL");
+
+    }
+
+    @Test
+    public void ShouldReturnSavedChannel() throws Exception {
+
+        Channel channel = new Channel("link1111.html","nazwadOtESTOW");
+        String json = this.mockMvc.perform(post("http://localhost:8080/server/saveChannel").contentType(MediaType.APPLICATION_JSON)
+                .content(mapper.writeValueAsString(channel).getBytes())).andDo(print())
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        System.out.println("json = " + json);
+       Channel channel1 = mapper.readValue(json, Channel.class);
+        Assert.assertEquals(channel1.getHyperlink(), "link1111.html");
 
     }
 
