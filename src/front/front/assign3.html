@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
     <script type="text/javascript" src="js/assign.js"> </script>
 </head>
-    <body onload="WyswietlFilmy()" >
+<body>
 <div id="left">
     <center><img width=260px height=150px src="img/logo.png" alt="Logo"><br><h1 style="color: white; font-size: 20;">MasterTV</h1></center>
 
@@ -34,13 +34,14 @@
         </ul>
     </div>
 </div>
-<div id="main">
-    <p>
-        <!-- <button type="button" onclick="getchannel()" id=tothechannels class="btn btn-primary btn-block btn-large" >Wyświetl</button>-->
-    <div class="newclass" id="newclass"></div>
-    </p>
 
-</div>
+    <div id="dseditad" class="login" align="center">
+        <h3 align="center">Ustaw Godzinę</h3>
+        <form name="hour" method="post" onsubmit="UstawGodzine()">
+            <input type="text" id="g" placeholder="Godzina" required="required" />
+            <input type="submit" value="Zatwierdź" id="submit" class="btn btn-primary btn-block btn-large">
+        </form>
+    </div>
 
 </body>
 </html>

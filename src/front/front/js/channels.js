@@ -81,7 +81,7 @@ function getchannel(){
                     Nazwa: jObj[i].name
                 }
 
-                html+='<tr>\t<td>' + info.Nazwa + '</td>\t\t<td>' + '<a href="'+info.Link+'">'+'Oglądaj!'+'</a></td></tr>';
+                html+='<tr>\t<td>' + info.Nazwa + '</td>\t\t<td>' + '<a href="'+info.Link+'">Oglądaj</a></td></tr>';
             } html += '</table></center></div>';
             document.querySelector('.showit').innerHTML = html;
             document.close();
