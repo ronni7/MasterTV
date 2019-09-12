@@ -100,6 +100,6 @@ public class ServerController {
     @PostMapping(path = "/deleteMovie")
     public @ResponseBody
     void deleteMovie(@RequestParam int movieID) {
-        serverService.deleteMovieByChannelID(movieID);
+        serverService.deleteMovieByID(movieID);
     }
 }

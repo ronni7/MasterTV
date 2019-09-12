@@ -1,0 +1,28 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>MasterTV</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/table.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <script type="text/javascript" src="js/register.js"></script>
+    </head>
+    <body>
+        <div class="login">
+            <center><img src="img/logo.png" width="100%" height="100%"/></center>
+            <h1>Rejestracja</h1>
+            <form name="register" method="post" onsubmit="rejestracja()">
+                <input type="text" name="l" placeholder="Login" minlength="3" maxlength="20" required="required" />
+                <input type="password" name="p1" placeholder="Hasło" minlength="3" maxlength="20" required="required" />
+                <input type="password" name="p2" placeholder="Powtórz hasło" minlength="3" maxlength="20" required="required" />
+                <input type="text" name="u" placeholder="Nazwa Użytkownika" minlength="3" maxlength="20" required="required" />
+                <input type="email" name="m" placeholder="E-Mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="40" required="required" />
+                <input type="text" name="i" placeholder="Imię" minlength="3" maxlength="20" required="required" />
+                <input type="text" name="n" placeholder="Nazwisko" minlength="3" maxlength="20" required="required" />
+                <input type="text" name="p" placeholder="Płeć (Kobieta | Mężczyzna)" pattern="Kobieta|Mężczyzna" maxlength="10" required="required"  />
+                <button type="submit" class="btn btn-primary btn-block btn-large">Zarejestruj</button>
+                <a href="index.html">Zaloguj się</a>
+            </form>
+        </div>
+    </body>
+</html>

@@ -49,7 +49,7 @@ public class ServerServiceImpl implements ServerService {
     }
 
     @Override
-    public void deleteMovieByChannelID(int movieID) {
+    public void deleteMovieByID(int movieID) {
         serverRepository.deleteById(movieID);
     }
 

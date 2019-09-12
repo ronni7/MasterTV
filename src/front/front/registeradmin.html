@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MasterTV</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+    <link rel="stylesheet" type="text/css" href="css/styles2.css">
+    <link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <script type="text/javascript" src="js/deleting.js"> </script>
+</head>
+<body>
+<div id="left">
+    <center><img width=260px height=150px src="img/logo.png" alt="Logo"><br><h1 style="color: white; font-size: 20;">MasterTV</h1></center>
+
+
+    <div id="div">
+        <ul>
+            <li><a href="main.html">Witaj</a></li>
+            <li><a href="films.html">Stacje</a></li>
+            <li><a href="channels.html">Telegazeta</a></li>
+            <li><a href="index.html">Wyloguj się</a></li>
+            <script type="text/javascript" src="js/registeradmin.js"></script>
+            &nbsp
+
+            <li id="admin"><a href="admin.html">Panel administracyjny</a></li>
+
+            <script type="text/javascript">
+                if(document.cookie==''){ location.href="index.html";}
+                if(document.cookie!='ADMIN'){
+                    document.getElementById('admin').style.visibility = 'hidden';
+                }
+            </script>
+
+        </ul>
+    </div>
+</div>
+<div id="main">
+    <div id="addsedit" class="login" align="center">
+    <h3 align="center">Rejestracja konta admina</h3>
+    <form name="register" method="post" onsubmit="rejestracjaAdmin()">
+        <input type="text" name="l" placeholder="Login" minlength="3" maxlength="20" required="required" />
+        <input type="password" name="p1" placeholder="Hasło" minlength="3" maxlength="20" required="required" />
+        <input type="password" name="p2" placeholder="Powtórz hasło" minlength="3" maxlength="20" required="required" />
+        <input type="text" name="u" placeholder="Nazwa Użytkownika" minlength="3" maxlength="20" required="required" />
+        <input type="email" name="m" placeholder="E-Mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="40" required="required" />
+        <input type="text" name="i" placeholder="Imię" minlength="3" maxlength="20" required="required" />
+        <input type="text" name="n" placeholder="Nazwisko" minlength="3" maxlength="20" required="required" />
+        <input type="text" name="p" placeholder="Płeć (Kobieta | Mężczyzna)" pattern="Kobieta|Mężczyzna" maxlength="10" required="required"  />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Zarejestruj</button>
+    </form>
+    </div>
+</div>
+
+</body>
+</html>

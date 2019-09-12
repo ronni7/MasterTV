@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MasterTV</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/table.css">
+        <link rel="stylesheet" type="text/css" href="css/styles2.css">
+		<link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  
+    </head>
+    <body>
+		<div id="left">
+		<center><img width=260px height=150px src="img/logo.png" alt="Logo"><br><h1 style="color: white; font-size: 20;">MasterTV</h1></center>
+		
+<div id="div">
+  <ul>
+    <li><a href="main.html">Witaj</a></li>
+    <li><a href="films.html">Stacje</a></li>
+	<li><a href="channels.html">Telegazeta</a></li>
+	<li><a href="index.html">Wyloguj się</a></li>
+	&nbsp
+	
+	<li><a href="#">Panel administracyjny</a></li>
+
+      <script type="text/javascript">
+          if(document.cookie==''){ location.href="index.html";}
+          if(document.cookie!='ADMIN'){
+              document.getElementById('admin').style.visibility = 'hidden';
+          }
+      </script>
+
+  </ul>
+</div> 
+</div>
+<div id="main">
+<h3 style="font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 50px; color: #006599;">Witaj w panelu administracyjnym </h3>
+<a style="font-family: 'Open Sans', Helvetica, Arial, sans-serif; color: #306FAF; font-weight: bold;" href="addfilm.html" >Dodaj film</a>
+<br><br>
+    <a style="font-family: 'Open Sans', Helvetica, Arial, sans-serif; color: #306FAF; font-weight: bold;" href="assign.html" >Przypisz kanał do filmu</a>
+    <br><br>
+<a style="font-family: 'Open Sans', Helvetica, Arial, sans-serif; color: #306FAF; font-weight: bold;" href="addchannel.html">Dodaj kanał</a>
+<br><br>
+<a style="font-family: 'Open Sans', Helvetica, Arial, sans-serif; color: #306FAF; font-weight: bold;" href="deletefilm.html">Usuń film</a>
+<br><br>
+<a style="font-family: 'Open Sans', Helvetica, Arial, sans-serif; color: #306FAF; font-weight: bold;" href="deletechannel.html">Usuń kanał</a>
+    <br><br>
+    <a style="font-family: 'Open Sans', Helvetica, Arial, sans-serif; color: #306FAF; font-weight: bold;" href="registeradmin.html">Dodaj konto admina</a>
+</div>
+    <script type="text/javascript"> //alert(document.cookie) </script>
+   </body>
+</html>

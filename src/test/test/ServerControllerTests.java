@@ -73,7 +73,7 @@ public class ServerControllerTests {
     @Test
     public void ShouldReturnUpdatedChannelWithAddedMovieOntoPlaylist() throws Exception {
 
-        String json = this.mockMvc.perform(post("http://localhost:8080/server/updateChannel").param("channelID", "1").param("movieID", "34").param("startingTime", "13:00")).andDo(print())
+        String json = this.mockMvc.perform(post("http://localhost:8080/server/updateChannel").param("channelID", "1").param("movieID", "64").param("startingTime", "13:00")).andDo(print())
                 .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
         Channel channel = mapper.readValue(json, Channel.class);
@@ -84,7 +84,7 @@ public class ServerControllerTests {
     @Test
     public void ShouldReturnUpdatedMovieAssignedToChannel() throws Exception {
         //String testMovieID="34", testStartAtTime="13:00";
-        String json = this.mockMvc.perform(post("http://localhost:8080/server/updateMovie").param("channelID", "1").param("movieID", "35").param("startingTime", "15:00")).andDo(print())
+        String json = this.mockMvc.perform(post("http://localhost:8080/server/updateMovie").param("channelID", "1").param("movieID", "65").param("startingTime", "15:00")).andDo(print())
                 .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
         Movie movie = mapper.readValue(json, Movie.class);
         Assert.assertEquals(movie.getStartAtTime(), "15:00");
@@ -103,7 +103,7 @@ public class ServerControllerTests {
     @Test
     public void ShouldReturnRequestedMovieFilename() throws Exception {
 
-        String json = this.mockMvc.perform(get("http://localhost:8080/server/getMovieFilename?movieID=33")).andDo(print())
+        String json = this.mockMvc.perform(get("http://localhost:8080/server/getMovieFilename?movieID=64")).andDo(print())
                 .andExpect(status().isOk()).andExpect(jsonPath("$").isNotEmpty()).andReturn().getResponse().getContentAsString();
         Assert.assertEquals(json, "lotr1.mp4");
 
@@ -114,7 +114,7 @@ public class ServerControllerTests {
 
         String json = this.mockMvc.perform(get("http://localhost:8080/server/watch?channelID=1")).andDo(print())
                 .andExpect(status().isOk()).andExpect(jsonPath("$").isNotEmpty()).andReturn().getResponse().getContentAsString();
-        Assert.assertEquals(json, "PrzykladowyURL");
+        Assert.assertEquals(json, "http://127.0.0.1:8080/MChannel");
 
     }
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MasterTV</title>
+        <meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/table.css">
+        <link rel="stylesheet" type="text/css" href="css/styles2.css">
+		<link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+		<script type="text/javascript" src="js/addfilm.js"></script>
+    </head>
+    <body>
+		<div id="left">
+		<center><img width=260px height=150px src="img/logo.png" alt="Logo"><br><h1 style="color: white; font-size: 20;">MasterTV</h1></center>
+		
+<div id="div">
+ <ul>
+    <li><a href="main.html">Witaj</a></li>
+    <li><a href="films.html">Stacje</a></li>
+	<li><a href="channels.html">Telegazeta</a></li>
+	<li><a href="index.html">Wyloguj się</a></li>
+	&nbsp
+	<li><a href="admin.html">Panel administracyjny</a></li>
+
+	 <script type="text/javascript">
+		 if(document.cookie==''){ location.href="index.html";}
+		 if(document.cookie!='ADMIN'){
+			 document.getElementById('admin').style.visibility = 'hidden';
+		 }
+	 </script>
+
+  </ul>
+</div> 
+</div>
+		<div id="addsedit" class="login" align="center">
+			<h3 align="center">Dodaj film</h3>
+				<form name="addfilm" method="post "onsubmit="addMovie()">
+                <input type="text" id="name" placeholder="Nazwa filmu" required="required" />
+				<input type="text" id="desc" placeholder="Opis filmu" required="required"/>
+				<input type="text" id="length" placeholder="Długość filmu w minutach" required="required" />
+				<input type="text" id="age" placeholder="Minimalny wiek" required="required" />
+				<input type="text" id="nameoffile" placeholder="Nazwa pliku" required="required"/>
+				<input type="text" id="start" placeholder="Początek filmu" required="required"/>
+
+				<br><br>
+                <input type="submit" value="Zatwierdź" id="Zatwierdź" class="btn btn-primary btn-block btn-large">
+				</form>
+</div>
+
+   </body>
+</html>

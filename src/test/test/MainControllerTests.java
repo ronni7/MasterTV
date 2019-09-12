@@ -99,7 +99,6 @@ public class MainControllerTests {
 
 
         UserLoggedDTO u = mapper.readValue(json, UserLoggedDTO.class);
-        //no longer returns true if validation is successful, userLoggedDTO instead
         Assert.assertEquals(u.getRole(), ROLE.USER);
     }
 
@@ -110,8 +109,7 @@ public class MainControllerTests {
                 .param("login", "admin"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$").isMap()).andReturn().getResponse().getContentAsString();
-        ;
-        //no longer returns true if validation is successful, userLoggedDTO instead
+
         UserLoggedDTO u = mapper.readValue(json, UserLoggedDTO.class);
 
         Assert.assertEquals(u.getRole(), ROLE.ADMIN);

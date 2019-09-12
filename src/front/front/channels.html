@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MasterTV</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/table.css">
+        <link rel="stylesheet" type="text/css" href="css/styles2.css">
+		<link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+		<script type="text/javascript" src="js/channels.js"> </script>
+        <link rel="stylesheet" type="text/css" href="css/table.css">
+    </head>
+    <body onload="getmovies()">
+		<div id="left">
+		<center><img width=260px height=150px src="img/logo.png" alt="Logo"><br><h1 style="color: white; font-size: 20;">MasterTV</h1></center>
+
+
+<div id="div">
+    <ul>
+    <li><a href="main.html">Witaj</a></li>
+    <li><a href="films.html">Stacje</a></li>
+	<li><a href="#">Telegazeta</a></li>
+	<li><a href="index.html">Wyloguj się</a></li>
+	&nbsp
+	
+	<li id="admin"><a href="admin.html">Panel administracyjny</a></li>
+
+        <script type="text/javascript">
+            if(document.cookie==''){ location.href="index.html";}
+            if(document.cookie!='ADMIN'){
+                document.getElementById('admin').style.visibility = 'hidden';
+            }
+        </script>
+
+  </ul>
+</div>
+</div> 
+<div id="main">
+	<h1 align="center">Telegazeta</h1>
+	<!-- <button type="button"  id="est3" onclick="getmovies()" class="btn btn-primary btn-block btn-large" >Wyświetl</button> -->
+	<div class="newclass" id="newclass"> </div>
+
+
+</div>
+
+   </body>
+</html>
